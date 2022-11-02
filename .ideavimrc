@@ -1,6 +1,28 @@
-"" Source your .vimrc
-"source ~/.vimrc
-source C:\Users\micha\Documents\GitHub\Vim\.vimrc
+" Scroll 5 lines near end of screen
+set scrolloff=5
+
+" Do incremental searching.
+set incsearch
+
+"^$ The symbol is too hard to press
+map gh ^
+map gl $
+
+"noremap <Space>re :action RenameElement<CR>
+
+" Don't use Ex mode, use Q for formatting.
+nnoremap <esc><esc> :noh<return><esc>
+map Q gq
+inoremap jj <Esc>
+nmap oo o<Esc>
+set timeoutlen=500
+:set relativenumber
+:set number
+set nocompatible
+set clipboard=unnamed
+set ignorecase smartcase
+let mapleader = "\<space>"
+
 map <leader>b <Action>(GotoDeclaration)
 map <leader>r <Action>(RecentFiles)
 map <leader>l <Action>(RecentLocations)
@@ -8,6 +30,7 @@ map <leader>i <Action>(QuickJavaDoc)
 map <leader>s <Action>(FileStructurePopup)
 map <leader>m <Action>(GotoClass)
 map <leader>f <Action>(Back)
+map <leader>g <Action>(Forward)
 map <leader>w <Action>(SelectInProjectView)
 map <leader>n <Action>(GotoClass)
 "" -- Suggested options --
