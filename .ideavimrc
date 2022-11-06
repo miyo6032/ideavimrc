@@ -21,21 +21,76 @@ inoremap jj <Esc>
 nmap oo o<Esc>
 nnoremap <esc><esc> :noh<return><esc>
 
+"" Control and Shift keys allow repeating actions
+"" Space keys do not
+
+""""""""""""""""""""""""""""""""""""""""""""" Essential Actions
+map <leader><leader> <Action>(GotoDeclaration)
+map <leader>b <Action>(Back)
+map <leader>f <Action>(Forward)
+map <S-U> <Action>($Redo)
+
+""""""""""""""""""""""""""""""""""""""""""""" Repeatable Actions
+noremap <S-K> <C-u>
+noremap <S-J> <C-d>
+map <C-k> <Action>(MethodUp)
+map <C-j> <Action>(MethodDown)
+
 """"""""""""""""""""""""""""""""""""""""""""" Search
+map <leader>sr <Action>(RecentFiles)
+map <leader>sl <Action>(RecentLocations)
+map <leader>ss <Action>(FileStructurePopup)
+map <leader>sc <Action>(GotoClass)
+map <leader>sf <Action>(FindInPath)
+map <leader>se <Action>(SearchEverywhere)
+map <leader>sa <Action>(GotoAction)
 
 """"""""""""""""""""""""""""""""""""""""""""" Jump
 
-""""""""""""""""""""""""""""""""""""""""""""" Debug
+""""""""""""""""""""""""""""""""""""""""""""" Refactor
+map <leader>rf <Action>(ReformatCode)
+map <leader>rl <S-V><leader>rf
+map <leader>rr <Action>(RenameElement)
+map <leader>rm <Action>(ExtractFunction)
+map <leader>rv <Action>(IntroduceVariable)
 
-map <leader>b <Action>(GotoDeclaration)
-map <leader>r <Action>(RecentFiles)
-map <leader>l <Action>(RecentLocations)
-map <leader>i <Action>(QuickJavaDoc)
-map <leader>s <Action>(FileStructurePopup)
-map <leader>m <Action>(GotoClass)
-map <leader>f <Action>(Back)
-map <leader>g <Action>(Forward)
-map <leader>w <Action>(SelectInProjectView)
-map <leader>n <Action>(GotoClass)
+""""""""""""""""""""""""""""""""""""""""""""" Debug
+" Step and continue should be Repeatable actions
+" map <S-S> <Action>(StepOver)
+" map <S-C> <Action>(Resume)
+
+" map <leader>de <Action>(EvaluateExpression)
+" map <leader>dd <Action>(ToggleLineBreakpoint)
+
+""""""""""""""""""""""""""""""""""""""""""""" Testing
+nnoremap gi :action GotoImplementation<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""" Contexts
+map <leader>cl <Action>(context.load)
+map <leader>cc <Action>(context.clear)
+map <leader>cs <Action>(context.save)
+
+""""""""""""""""""""""""""""""""""""""""""""" Information
+map <leader>ii <Action>(QuickJavaDoc)
+map <leader>ip <Action>(ParameterInfo)
+
+""""""""""""""""""""""""""""""""""""""""""""" Windows
+map <leader>we <Action>(SelectInProjectView)
+map <leader>wu <Action>(ActivateUnitTestsToolWindow)
+map <leader>wt <Action>(ActivateTerminalToolWindow)
+map <leader>wd <Action>(ActivateDebugToolWindow)
+map <leader>ww <Action>(ToggleDistractionFreeMode)<Esc><Action>(Back)<Action>(Forward)
+
+" Cannot use leader
+"map <C-l> :action JumpToLastWindow<CR>
+"map <C-x> :action HideAllWindows<CR>
+
+" Need a good solution for this
+" map <leader>hw <Action>(HideActiveWindow) maybe Shift esc is good enough
+
+" Peripheral Settings that work well:
+" A-j to down
+" A-k to up
+" swap esc with caps lock 
 
 " Find more examples here: https://jb.gg/share-ideavimrc
