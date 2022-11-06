@@ -1,20 +1,10 @@
+"""""""""""""""""""""""""""""""""""""""""""""" General Settings
 " Scroll 5 lines near end of screen
 set scrolloff=5
 
 " Do incremental searching.
 set incsearch
 
-"^$ The symbol is too hard to press
-map gh ^
-map gl $
-
-"noremap <Space>re :action RenameElement<CR>
-
-" Don't use Ex mode, use Q for formatting.
-nnoremap <esc><esc> :noh<return><esc>
-map Q gq
-inoremap jj <Esc>
-nmap oo o<Esc>
 set timeoutlen=500
 :set relativenumber
 :set number
@@ -22,6 +12,20 @@ set nocompatible
 set clipboard=unnamed
 set ignorecase smartcase
 let mapleader = "\<space>"
+
+"""""""""""""""""""""""""""""""""""""""""""""" Vim related keys
+"^$ The symbol is too hard to press
+map gh ^
+map gl $
+inoremap jj <Esc>
+nmap oo o<Esc>
+nnoremap <esc><esc> :noh<return><esc>
+
+""""""""""""""""""""""""""""""""""""""""""""" Search
+
+""""""""""""""""""""""""""""""""""""""""""""" Jump
+
+""""""""""""""""""""""""""""""""""""""""""""" Debug
 
 map <leader>b <Action>(GotoDeclaration)
 map <leader>r <Action>(RecentFiles)
@@ -33,33 +37,5 @@ map <leader>f <Action>(Back)
 map <leader>g <Action>(Forward)
 map <leader>w <Action>(SelectInProjectView)
 map <leader>n <Action>(GotoClass)
-"" -- Suggested options --
-" Show a few lines of context around the cursor. Note that this makes the
-" text scroll if you mouse-click near the start or end of the window.
-" set scrolloff=5
 
-" Do incremental searching.
-" set incsearch
-
-" Don't use Ex mode, use Q for formatting.
-" nnoremap <esc><esc> :noh<return><esc>
-" map Q gq
-" inoremap jj <esc>
-" nmap oo o<esc>
-" set timeoutlen=1000
-" :set relativenumber
-" :set number
-" set nocompatible
-" set clipboard=unnamed
-" set ignorecase smartcase
-
-"" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
-"" Map \r to the Reformat Code action
-"map \r <Action>(ReformatCode)
-
-"" Map <leader>d to start debug
-"map <leader>d <Action>(Debug)
-
-"" Map \b to toggle the breakpoint on the current line
-"map \b <Action>(ToggleLineBreakpoint)
 " Find more examples here: https://jb.gg/share-ideavimrc
