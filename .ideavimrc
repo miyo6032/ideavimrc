@@ -28,6 +28,7 @@ nnoremap <esc><esc> :noh<return><esc>
 map <leader><leader> <Action>(GotoDeclaration)
 map <leader>b <Action>(Back)
 map <leader>f <Action>(Forward)
+" May want Back and foward to be Repeatable as well.
 map <S-U> <Action>($Redo)
 
 """"""""""""""""""""""""""""""""""""""""""""" Repeatable Actions
@@ -44,8 +45,13 @@ map <leader>sc <Action>(GotoClass)
 map <leader>sf <Action>(FindInPath)
 map <leader>se <Action>(SearchEverywhere)
 map <leader>sa <Action>(GotoAction)
+" Need solutions for Find and replace within files
 
-""""""""""""""""""""""""""""""""""""""""""""" Jump
+""""""""""""""""""""""""""""""""""""""""""""" Build and Run
+map <F7> <Action>(CompileDirty)
+map <F8> <Action>(Debug)
+map <F9> <Action>(CompileFile)
+map <F12> <Action>(Stop)
 
 """"""""""""""""""""""""""""""""""""""""""""" Refactor
 map <leader>rf <Action>(ReformatCode)
@@ -56,18 +62,21 @@ map <leader>rv <Action>(IntroduceVariable)
 
 """"""""""""""""""""""""""""""""""""""""""""" Debug
 " Step and continue should be Repeatable actions
-" map <S-S> <Action>(StepOver)
-" map <S-C> <Action>(Resume)
+map <F1> <Action>(ToggleLineBreakpoint)
+map <F2> <Action>(StepInto)
+map <F3> <Action>(StepOut)
+map <F4> <Action>(StepOver)
+map <F5> <Action>(Resume)
+map <F6> <Action>(EvaluateExpression)
 
-" map <leader>de <Action>(EvaluateExpression)
-" map <leader>dd <Action>(ToggleLineBreakpoint)
-
-""""""""""""""""""""""""""""""""""""""""""""" Testing
+""""""""""""""""""""""""""""""""""""""""""""" Navigation
 nnoremap gi :action GotoImplementation<CR>
+nnoremap gp :action GotoSuperMethod<CR>
+nnoremap gt :action GotoTest<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""" Contexts
 map <leader>cl <Action>(context.load)
-map <leader>cc <Action>(context.clear)
+map <leader>cc <Action>(context.clear)<Action>(SearchEverywhere)
 map <leader>cs <Action>(context.save)
 
 """"""""""""""""""""""""""""""""""""""""""""" Information
@@ -80,17 +89,17 @@ map <leader>wu <Action>(ActivateUnitTestsToolWindow)
 map <leader>wt <Action>(ActivateTerminalToolWindow)
 map <leader>wd <Action>(ActivateDebugToolWindow)
 map <leader>ww <Action>(ToggleDistractionFreeMode)<Esc><Action>(Back)<Action>(Forward)
+map <C-w> :action HideAllWindows<CR>
 
 " Cannot use leader
 "map <C-l> :action JumpToLastWindow<CR>
-"map <C-x> :action HideAllWindows<CR>
-
-" Need a good solution for this
-" map <leader>hw <Action>(HideActiveWindow) maybe Shift esc is good enough
 
 " Peripheral Settings that work well:
 " A-j to down
 " A-k to up
 " swap esc with caps lock 
+
+" Alt key settings
+" A-w and A-e for switcher
 
 " Find more examples here: https://jb.gg/share-ideavimrc
