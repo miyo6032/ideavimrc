@@ -5,13 +5,14 @@ set scrolloff=5
 " Do incremental searching.
 set incsearch
 
-set timeoutlen=500
+:set timeoutlen=500
 :set relativenumber
 :set number
-set nocompatible
-set clipboard=unnamed
-set ignorecase smartcase
+:set nocompatible
+:set clipboard=unnamed
+:set ignorecase smartcase
 let mapleader = "\<space>"
+:set keep-english-in-normal
 
 """""""""""""""""""""""""""""""""""""""""""""" Vim related keys
 "^$ The symbol is too hard to press
@@ -19,16 +20,23 @@ map gh ^
 map gl $
 inoremap jj <Esc>
 nmap oo o<Esc>
-nnoremap <esc><esc> :noh<return><esc>
+
+" Sometimes rider loses focus without ability to esc, so this forces focus
+map <Esc><Esc> <Esc><Action>(Back)<Action>(Forward)
+" nnoremap <esc><esc> :noh<return><esc>
 
 "" Control and Shift keys allow repeating actions
 "" Space keys do not
+
+""""""""""""""""""""""""""""""""""""""""""""" Selection
+map <leader>va gg<S-V><S-G>
 
 """"""""""""""""""""""""""""""""""""""""""""" Essential Actions
 map <leader><leader> <Action>(GotoDeclaration)
 map <leader>b <Action>(Back)
 map <leader>f <Action>(Forward)
-" May want Back and foward to be Repeatable as well.
+map <leader>vim <Action>(VimActions)
+" May want Back and forward to be Repeatable as well.
 map <S-U> <Action>($Redo)
 
 """"""""""""""""""""""""""""""""""""""""""""" Repeatable Actions
@@ -42,7 +50,8 @@ map <leader>sr <Action>(RecentFiles)
 map <leader>sl <Action>(RecentLocations)
 map <leader>ss <Action>(FileStructurePopup)
 map <leader>sc <Action>(GotoClass)
-map <leader>sf <Action>(FindInPath)
+map <leader>sf <Action>(GotoFile)
+map <leader>st <Action>(FindInPath)
 map <leader>se <Action>(SearchEverywhere)
 map <leader>sa <Action>(GotoAction)
 " Need solutions for Find and replace within files
@@ -59,6 +68,7 @@ map <leader>rl <S-V><leader>rf
 map <leader>rr <Action>(RenameElement)
 map <leader>rm <Action>(ExtractFunction)
 map <leader>rv <Action>(IntroduceVariable)
+" map <> <Action>(CommentByLineComment)
 
 """"""""""""""""""""""""""""""""""""""""""""" Debug
 " Step and continue should be Repeatable actions
@@ -88,18 +98,26 @@ map <leader>we <Action>(SelectInProjectView)
 map <leader>wu <Action>(ActivateUnitTestsToolWindow)
 map <leader>wt <Action>(ActivateTerminalToolWindow)
 map <leader>wd <Action>(ActivateDebugToolWindow)
+map <leader>wc <Action>(ActivateCommitToolWindow)
 map <leader>ww <Action>(ToggleDistractionFreeMode)<Esc><Action>(Back)<Action>(Forward)
+" Not the greatest solution, but we have shift escape that usually does what we want anyway
 map <C-w> :action HideAllWindows<CR>
 
 " Cannot use leader
 "map <C-l> :action JumpToLastWindow<CR>
+" gn is good
 
 " Peripheral Settings that work well:
 " A-j to down
 " A-k to up
+" A-h left
+" A-l right
+" A-' end
+" A-y home?
 " swap esc with caps lock 
 
 " Alt key settings
-" A-w and A-e for switcher
+" A-w and A-e for switcher (reason is because they are close to alt tab)
+" A-; for next error
 
 " Find more examples here: https://jb.gg/share-ideavimrc
